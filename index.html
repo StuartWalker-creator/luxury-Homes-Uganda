@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxury Homes UG — Marketplace Mock</title>
+ <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* small, sleek scrollbar for gallery preview */
+    .fancy-scroll::-webkit-scrollbar { height: 8px; }
+    .fancy-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- NAV -->
+  <header class="bg-white shadow-sm sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full w-10 h-10 flex items-center justify-center text-white font-bold">LH</div>
+        <div>
+          <a href="#" class="text-lg font-bold">Luxury Homes UG</a>
+          <div class="text-xs text-gray-500">Property marketplace</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6">
+    <a href="#" class="hover:text-yellow-600">Home</a>
+    <a href="#listings" class="hover:text-yellow-600">Listings</a>
+    <a href="#post" class="hover:text-yellow-600">Post Property</a>
+    <a href="#contact" class="hover:text-yellow-600">Contact</a>
+  </nav>
+
+  <div class="flex items-center gap-3">
+    <button id="postBtn" class="hidden md:inline bg-yellow-600 text-white px-3 py-1 rounded">Post Listing</button>
+    <button class="md:hidden" id="mobileMenuBtn" aria-label="menu">
+      <!-- hamburger -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- mobile menu -->
+<div id="mobileMenu" class="md:hidden bg-white border-t hidden">
+  <div class="px-4 py-3 flex flex-col gap-2">
+    <a href="#" class="py-2">Home</a>
+    <a href="#listings" class="py-2">Listings</a>
+    <a href="#post" class="py-2">Post Property</a>
+    <a href="#contact" class="py-2">Contact</a>
+  </div>
+</div>
+
+  </header>  <!-- CREATIVE SEARCH / HERO -->  <section class="bg-gradient-to-r from-yellow-100 to-white py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="rounded-3xl p-6 md:p-8 shadow-md bg-white grid md:grid-cols-3 gap-6 items-center">
+        <!-- Creative left: short pitch + icons -->
+        <div class="flex flex-col gap-3">
+          <h1 class="text-2xl md:text-3xl font-extrabold">Find property fast —, made for luxury</h1>
+          <p class="text-sm text-gray-600">.</p>
+          <div class="flex gap-3 mt-2">
+            <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+              <!-- icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21v-7a4 4 0 014-4h10a4 4 0 014 4v7"/></svg>
+              <div class="text-xs">Verified sellers</div>
+            </div>
+            <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7h18M3 12h18M3 17h18"/></svg>
+              <div class="text-xs">Fast discovery</div>
+            </div>
+          </div>
+        </div><!-- Search center -->
+    <div class="md:col-span-2">
+      <div class="bg-gradient-to-r from-white to-gray-50 rounded-2xl p-4 shadow-inner grid sm:grid-cols-3 gap-3 items-center">
+        <div class="flex items-center gap-2 bg-white border rounded-lg p-2 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"/></svg>
+          <input id="searchInput" class="w-full outline-none text-sm" placeholder="Search location, e.g. Kololo, Entebbe" />
+        </div>
+
+        <div class="flex items-center gap-2 bg-white border rounded-lg p-2 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7h18M7 21V7"/></svg>
+          <div class="flex gap-2">
+            <button data-type="buyrent" data-value="buy" class="typeBtn px-3 py-1 rounded-md text-sm bg-yellow-50 border">Buy</button>
+            <button data-type="buyrent" data-value="rent" class="typeBtn px-3 py-1 rounded-md text-sm">Rent</button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 justify-end">
+          <button id="searchBtn" class="bg-yellow-600 text-white px-4 py-2 rounded-lg">Search</button>
+        </div>
+
+        <!-- categories visible - full width under inputs -->
+        <div class="sm:col-span-3 mt-3">
+          <div class="flex flex-wrap gap-2">
+            <button class="catBtn flex items-center gap-2 px-3 py-1 rounded-full bg-white border shadow-sm text-sm" data-cat="all">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              All
+            </button>
+            <button class="catBtn flex items-center gap-2 px-3 py-1 rounded-full bg-white border shadow-sm text-sm" data-cat="house">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11l9-7 9 7v8a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2v-8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              Houses
+            </button>
+            <button class="catBtn flex items-center gap-2 px-3 py-1 rounded-full bg-white border shadow-sm text-sm" data-cat="apartment">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              Apartments
+            </button>
+            <button class="catBtn flex items-center gap-2 px-3 py-1 rounded-full bg-white border shadow-sm text-sm" data-cat="land">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              Land
+            </button>
+            <button class="catBtn flex items-center gap-2 px-3 py-1 rounded-full bg-white border shadow-sm text-sm" data-cat="commercial">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              Commercial
+            </button>
+            <button class="catBtn flex items-center gap-2 px-3 py-1 rounded-full bg-white border shadow-sm text-sm" data-cat="rent">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              Rentals
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </section>  <!-- LISTINGS -->  <main class="max-w-6xl mx-auto px-4 py-6" id="listings">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-semibold">Latest listings</h2>
+      <div class="text-sm text-gray-500">Showing <span id="count">0</span> results</div>
+    </div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="grid">
+  <!-- JS will inject compact cards here -->
+</div>
+
+<!-- property preview/detail - single property page style -->
+<section id="preview" class="mt-8 bg-white rounded-2xl p-6 shadow-md hidden">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="md:col-span-2">
+      <div class="rounded-lg overflow-hidden">
+        <img id="previewImg" src="" alt="preview" class="w-full h-60 object-cover" />
+      </div>
+      <div class="mt-3 flex gap-2 overflow-x-auto fancy-scroll">
+        <!-- thumbnails -->
+      </div>
+    </div>
+    <aside class="p-4 border rounded-lg">
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 id="previewTitle" class="font-bold text-xl">Title</h3>
+          <div id="previewLocation" class="text-sm text-gray-500">Location</div>
+        </div>
+        <div class="text-right">
+          <div id="previewPrice" class="text-yellow-600 font-extrabold text-2xl">UGX 0</div>
+          <div class="text-xs text-gray-500">Posted: <span id="previewPosted">-</span></div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-sm text-gray-700">
+        <div id="previewFacts">Beds • Baths • Area</div>
+        <p id="previewDesc" class="text-gray-600">Full description will appear here when a listing is selected.</p>
+      </div>
+
+      <div class="mt-6 flex gap-2">
+        <a id="waLink" href="#" class="flex-1 bg-green-600 text-white rounded p-2 text-center">WhatsApp</a>
+        <a id="callLink" href="#" class="flex-1 border rounded p-2 text-center">Call</a>
+      </div>
+
+      <div class="mt-4 text-xs text-gray-500">Seller: <span id="previewSeller">Agent</span></div>
+    </aside>
+  </div>
+</section>
+
+  </main>  <!-- FOOTER -->  <footer class="bg-white border-t mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600">© Luxury Homes UG — mockup · Built for demo</div>
+  </footer>  <script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function(){
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+    });
+
+    // Demo dataset
+    const DATA = [
+      { id:1, title:'6 Bedroom Villa, Muyenga', price:'UGX 1,200,000,000', location:'Muyenga, Kampala', beds:6, baths:5, area:'4500 ft²', cat:'house', img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=60', posted:'2025-08-12', seller:'Owner' },
+      { id:2, title:'Lake View Plot, Entebbe', price:'UGX 350,000,000', location:'Entebbe Road', beds:null, baths:null, area:'25 decimals', cat:'land', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=60', posted:'2025-08-10', seller:'Agent' },
+      { id:3, title:'2 Bedroom Apartment, Kololo', price:'UGX 3,500,000 / mo', location:'Kololo, Kampala', beds:2, baths:2, area:'1200 ft²', cat:'apartment', img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=60', posted:'2025-08-16', seller:'Verified Agent' },
+      { id:4, title:'Commercial Space, Industrial Area', price:'UGX 800,000,000', location:'Industrial Road', beds:null, baths:2, area:'3000 ft²', cat:'commercial', img:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=60', posted:'2025-08-14', seller:'Agent' },
+      { id:5, title:'1 Bedroom Studio, Nakulabye', price:'UGX 800,000 / mo', location:'Nakulabye, Kampala', beds:1, baths:1, area:'400 ft²', cat:'apartment', img:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=60', posted:'2025-08-15', seller:'Owner' }
+    ];
+
+    const grid = document.getElementById('grid');
+    const count = document.getElementById('count');
+    const preview = document.getElementById('preview');
+
+    function renderCard(item){
+      const div = document.createElement('div');
+      div.className = 'bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition';
+      div.innerHTML = `
+        <div class="flex gap-3 items-center p-2">
+          <img src="${item.img}&auto=format&fit=crop&w=400&h=200" alt="${item.title}" class="w-28 h-20 object-cover rounded" />
+          <div class="flex-1">
+            <div class="flex justify-between items-start">
+              <h3 class="font-semibold text-sm truncate">${item.title}</h3>
+              <div class="text-yellow-600 font-bold text-sm">${item.price}</div>
+            </div>
+            <div class="text-xs text-gray-500">${item.location}</div>
+            <div class="text-xs text-gray-500 mt-1">${item.beds?item.beds+' bd • ':''}${item.baths?item.baths+' ba • ':''}${item.area}</div>
+            <div class="mt-2 flex gap-2">
+              <button class="waBtn flex items-center gap-2 text-xs bg-green-600 text-white rounded px-2 py-1">WhatsApp</button>
+              <button class="viewBtn flex items-center gap-2 text-xs border rounded px-2 py-1">View</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // attach behaviors
+      div.querySelector('.viewBtn').addEventListener('click', ()=> showPreview(item));
+      div.querySelector('.waBtn').addEventListener('click', ()=>{ window.open('https://wa.me/?text='+encodeURIComponent(item.title + ' - ' + item.location + ' | ' + item.price), '_blank'); });
+
+      return div;
+    }
+
+    function showPreview(item){
+      document.getElementById('previewImg').src = item.img + '&auto=format&fit=crop&w=1200&h=800';
+      document.getElementById('previewTitle').textContent = item.title;
+      document.getElementById('previewLocation').textContent = item.location;
+      document.getElementById('previewPrice').textContent = item.price;
+      document.getElementById('previewPosted').textContent = item.posted;
+      document.getElementById('previewFacts').textContent = `${item.beds?item.beds+' Beds • ':''}${item.baths?item.baths+' Baths • ':''}${item.area}`;
+      document.getElementById('previewDesc').textContent = item.title + ' — full description placeholder. Contact seller for more details.';
+      document.getElementById('previewSeller').textContent = item.seller;
+      document.getElementById('waLink').href = 'https://wa.me/?text='+encodeURIComponent(item.title + ' - ' + item.location + ' | ' + item.price);
+      document.getElementById('callLink').href = '#';
+      preview.classList.remove('hidden');
+      window.scrollTo({top: preview.offsetTop - 20, behavior: 'smooth'});
+    }
+
+    function render(list){
+      grid.innerHTML = '';
+      list.forEach(item => grid.appendChild(renderCard(item)));
+      count.textContent = list.length;
+    }
+
+    // initial render
+    render(DATA);
+
+    // Search & filters
+    document.querySelectorAll('.catBtn').forEach(btn=> btn.addEventListener('click', function(){
+      const cat = this.dataset.cat;
+      document.querySelectorAll('.catBtn').forEach(b=> b.classList.remove('bg-yellow-50'));
+      this.classList.add('bg-yellow-50');
+      if(cat === 'all') render(DATA); else render(DATA.filter(d=> d.cat === cat));
+    }));
+
+    document.querySelectorAll('.typeBtn').forEach(b=> b.addEventListener('click', function(){
+      document.querySelectorAll('.typeBtn').forEach(x=> x.classList.remove('bg-yellow-50'));
+      this.classList.add('bg-yellow-50');
+    }));
+
+    document.getElementById('searchBtn').addEventListener('click', function(){
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const filtered = DATA.filter(d=> d.title.toLowerCase().includes(q) || d.location.toLowerCase().includes(q));
+      render(filtered);
+    });
+
+  </script></body>
+</html>
